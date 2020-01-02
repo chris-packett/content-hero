@@ -4,7 +4,16 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      {
+        path: '',
+        component: () => import('pages/Index.vue')
+      },
+      {
+        name: 'NewProject',
+        path: '/projects/new',
+        props: true,
+        component: () => import('pages/NewProject.vue')
+      }
     ]
   }
 ]

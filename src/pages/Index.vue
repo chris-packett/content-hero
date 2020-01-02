@@ -1,6 +1,6 @@
 <template>
-  <q-page class="q-pa-md flex column hero-grey">
-    <q-btn color="primary" label="New Project +" rounded class="self-end">
+  <q-page class="q-pa-lg flex column hero-grey">
+    <q-btn color="secondary" label="New Project +" rounded class="self-end">
       <q-menu transition-show="jump-down" transition-hide="jump-up">
         <q-list style="min-width: 100px">
           <q-item clickable @click="openNewProjectDialog()">
@@ -31,28 +31,35 @@
       <q-card>
         <q-list bordered separator class="rounded-borders">
           <q-item>
-            <q-item-section top class="col-10 gt-sm">
+            <q-item-section top class="col-10">
               <q-item-label header>Projects ({{ totalProjects }})</q-item-label>
             </q-item-section>
 
-            <q-item-section>
+            <q-item-section class="gt-sm">
               <q-item-label caption>Status</q-item-label>
             </q-item-section>
           </q-item>
 
-          <q-item v-for="project in projects" :key="project.id" clickable v-ripple>
-            <q-item-section top class="col-10 gt-sm">
+          <q-item v-for="project in projects" :key="project.id" clickable :to="`/projects/${project.id}`">
+            <q-item-section top class="col-10">
               <q-item-label class="q-mt-sm">{{ project.name }}</q-item-label>
             </q-item-section>
 
-            <q-item-section>
+            <q-item-section class="gt-sm">
               {{ project.status }}
             </q-item-section>
 
             <q-item-section side>
               <div class="text-grey-8 q-gutter-xs">
-                <q-btn size="12px" flat dense round icon="more_vert" />
+                <q-btn size="12px" flat dense round icon="more_vert" @click.prevent />
               </div>
+              <q-menu anchor="bottom right" self="top right">
+                <q-list>
+                  <q-item clickable dense class="text-primary">Edit</q-item>
+                  <q-separator />
+                  <q-item clickable dense class="text-negative">Delete</q-item>
+                </q-list>
+              </q-menu>
             </q-item-section>
           </q-item>
         </q-list>

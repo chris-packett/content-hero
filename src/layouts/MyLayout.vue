@@ -24,8 +24,8 @@
       content-class="bg-grey-2"
     >
       <q-list>
-        <q-item-label header>Main Menu</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-item-label header>Content Hero</q-item-label>
+        <q-item clickable to="/">
           <q-item-section avatar>
             <q-icon name="home" />
           </q-item-section>
@@ -33,15 +33,7 @@
             <q-item-label>Home</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="assignment" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Requests</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-item clickable to="/templates">
           <q-item-section avatar>
             <q-icon name="folder" />
           </q-item-section>
@@ -49,7 +41,7 @@
             <q-item-label>Templates</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-item clickable to="/clients">
           <q-item-section avatar>
             <q-icon name="mood" />
           </q-item-section>
@@ -57,7 +49,7 @@
             <q-item-label>Clients</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-item clickable>
           <q-item-section avatar>
             <q-icon name="settings" />
           </q-item-section>

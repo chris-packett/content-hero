@@ -3,8 +3,6 @@
     v-model="$attrs.value"
     v-bind="$attrs"
     v-on="$listeners"
-    ref="npDialog"
-    @hide="isShowing = false"
     persistent>
     <q-card style="min-width: 350px">
       <q-card-section>
@@ -12,7 +10,6 @@
           v-model="newProject.name"
           label="Project Name"
           autofocus
-          @keyup.enter="prompt = false"
         />
       </q-card-section>
 
@@ -36,16 +33,9 @@
 
       <q-card-actions align="right" class="text-primary">
         <q-btn flat label="Cancel" v-close-popup />
-        <q-btn flat label="Create Project" @click="trigger" />
+        <q-btn flat label="Create Project" @click="createProject" />
       </q-card-actions>
     </q-card>
-    <q-ajax-bar
-      ref="bar"
-      position="top"
-      color="secondary"
-      size="10px"
-      skip-hijack
-    />
   </q-dialog>
 </template>
 
@@ -73,18 +63,22 @@ export default {
         )
       })
     },
-    trigger () {
-      const bar = this.$refs.bar
-
-      bar.start()
+    createProject () {
+      this.$q.loading.show()
 
       this.timer = setTimeout(() => {
-        if (this.$refs.bar) {
-          this.$refs.bar.stop()
-        }
+        this.$q.loading.hide()
+        this.timer = void 0
 
-        this.$refs.npDialog.hide()
-      }, Math.random() * 3000 + 1000)
+        this.newProject.templateId = this.templateId
+        this.$router.push({ name: 'NewProject', params: { newProject: this.newProject } })
+      }, 2000)
+    }
+  },
+  beforeDestroy () {
+    if (this.timer !== void 0) {
+      clearTimeout(this.timer)
+      this.$q.loading.hide()
     }
   }
 }
