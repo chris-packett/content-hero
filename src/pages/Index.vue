@@ -35,7 +35,7 @@
               <q-item-label header>Projects ({{ totalProjects }})</q-item-label>
             </q-item-section>
 
-            <q-item-section class="gt-sm">
+            <q-item-section class="gt-xs">
               <q-item-label caption>Status</q-item-label>
             </q-item-section>
           </q-item>
@@ -45,7 +45,7 @@
               <q-item-label class="q-mt-sm">{{ project.name }}</q-item-label>
             </q-item-section>
 
-            <q-item-section class="gt-sm">
+            <q-item-section class="gt-xs">
               {{ project.status }}
             </q-item-section>
 
