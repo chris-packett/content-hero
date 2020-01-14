@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="q-px-lg">
         <q-btn
           flat
           dense
@@ -20,12 +20,11 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      :width="250"
+      :width="100"
       bordered
-      content-class="bg-grey-2">
+      content-class="bg-grey-1">
       <q-list>
         <q-item-label header>
-          Navigation
         </q-item-label>
 
         <q-item
@@ -34,12 +33,9 @@
           :to="nav.to"
           exact
           clickable>
-          <q-item-section avatar>
+          <q-item-section avatar class="items-center q-pr-none">
             <q-icon :name="nav.icon" />
-          </q-item-section>
-
-          <q-item-section>
-            <q-item-label>{{ nav.label }}</q-item-label>
+            <q-item-label caption>{{ nav.label }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
