@@ -28,7 +28,18 @@
       </q-menu>
     </q-btn>
     <div class="q-py-xl">
-      <q-card flat>
+      <q-card flat v-for="customer in customers" :key="customer.id">
+        <q-item>
+          <q-item-section avatar>
+            <q-avatar size="75px">
+              <img :src="customer.avatarUrl">
+            </q-avatar>
+          </q-item-section>
+          <q-item-section>
+            <h5 class="q-mt-sm q-mb-xs">{{ customer.name }}</h5>
+            <q-item-label caption>{{ customer.email }}</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-list separator>
           <q-item>
             <q-item-section top class="col-5">
@@ -116,6 +127,20 @@ export default {
     return {
       modal: false,
       templateIdSelected: undefined,
+      customers: [
+        {
+          id: 1,
+          name: 'Mark Lombardi',
+          email: 'mark@shoottothrillmedia.com',
+          avatarUrl: 'https://cdn.quasar.dev/img/avatar.png'
+        },
+        {
+          id: 2,
+          name: 'Matt Foreman',
+          email: 'matt@shoottothrillmedia.com',
+          avatarUrl: 'https://cdn.quasar.dev/img/boy-avatar.png'
+        }
+      ],
       projects: [
         {
           id: 1,
