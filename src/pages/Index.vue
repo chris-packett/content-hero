@@ -1,6 +1,6 @@
 <template>
-  <q-page class="q-pa-xl column">
-    <q-btn color="secondary" label="New Project +" rounded class="self-end">
+  <q-page class="q-pa-lg column">
+    <q-btn color="secondary" label="New Project +" class="self-end">
       <q-menu transition-show="jump-down" transition-hide="jump-up">
         <q-list style="min-width: 100px">
           <q-item clickable @click="openNewProjectDialog()">
@@ -27,30 +27,30 @@
         </q-list>
       </q-menu>
     </q-btn>
-    <div class="q-py-xl">
-      <q-card flat v-for="customer in customers" :key="customer.id">
+    <div>
+      <q-card flat v-for="customer in customers" :key="customer.id" class="q-my-sm">
         <q-item>
           <q-item-section avatar>
-            <q-avatar size="75px">
-              <img :src="customer.avatarUrl">
+            <q-avatar size="75px" :color="customer.name === 'Mark Lombardi' ? 'secondary' : 'accent'" class="text-white">
+              {{ customer.name === 'Mark Lombardi' ? 'ML' : 'MF' }}
             </q-avatar>
           </q-item-section>
           <q-item-section>
-            <h5 class="q-mt-sm q-mb-xs">{{ customer.name }}</h5>
+            <h5 class="q-my-sm text-grey-8">{{ customer.name }}</h5>
             <q-item-label caption>{{ customer.email }}</q-item-label>
           </q-item-section>
         </q-item>
         <q-list separator>
           <q-item>
-            <q-item-section top class="col-5">
+            <q-item-section top class="col-3">
               <q-item-label header class="q-px-none">Project Name</q-item-label>
             </q-item-section>
 
-            <q-item-section top class="col-1 q-mr-sm">
+            <q-item-section top class="col-2 q-mr-sm">
               <q-item-label header class="q-px-none">Due Date</q-item-label>
             </q-item-section>
 
-            <q-item-section top class="col-1">
+            <q-item-section top class="col-2">
               <q-item-label header class="q-px-none">Status</q-item-label>
             </q-item-section>
 
@@ -62,34 +62,43 @@
           <q-item
             v-for="project in projects"
             :key="project.id"
-            clickable
-            :to="`/projects/${project.id}`"
             class="q-pb-md">
-            <q-item-section class="col-5">
-              {{ project.name }}
+            <q-item-section class="col-3 text-grey-8 text-bold">
+              <q-btn
+                flat
+                :to="`/projects/${project.id}`"
+                v-ripple>
+                {{ project.name }}
+              </q-btn>
             </q-item-section>
 
-            <q-item-section class="col-1">
+            <q-item-section class="col-2 text-grey-8">
               {{ project.dueDate }}
             </q-item-section>
 
-            <q-item-section class="col-1 q-mr-sm">
-              <q-chip :color="getStatusColor(project.status)" text-color="white">
-                {{ project.status }}
-              </q-chip>
+            <q-item-section>
+              <div style="width: 70%;" class="column">
+                <q-chip
+                  outline
+                  square
+                  class="justify-center"
+                  :color="getStatusColor(project.status)">
+                  {{ project.status }}
+                </q-chip>
+              </div>
             </q-item-section>
 
             <q-item-section class="col-4">
               <div clickable @click.prevent>
                 <div class="row">
-                  <q-btn flat dense class="col text-center"><h6 class="q-my-sm">{{ project.progress.approved }}</h6></q-btn>
-                  <q-btn flat dense class="col text-center"><h6 class="q-my-sm">{{ project.progress.completed }}</h6></q-btn>
-                  <q-btn flat dense class="col text-center"><h6 class="q-my-sm">{{ project.progress.toDo }}</h6></q-btn>
+                  <q-btn flat dense class="col text-center"><h6 class="q-my-xs text-grey-8">{{ project.progress.approved }}</h6></q-btn>
+                  <q-btn flat dense class="col text-center"><h6 class="q-my-xs text-grey-8">{{ project.progress.completed }}</h6></q-btn>
+                  <q-btn flat dense class="col text-center"><h6 class="q-my-xs text-grey-8">{{ project.progress.toDo }}</h6></q-btn>
                 </div>
                 <div class="row">
-                  <div class="col text-center"><i>Approved</i></div>
-                  <div class="col text-center"><i>Completed</i></div>
-                  <div class="col text-center"><i>To Do</i></div>
+                  <div class="col text-center text-grey-8"><i>Approved</i></div>
+                  <div class="col text-center text-grey-8"><i>Completed</i></div>
+                  <div class="col text-center text-grey-8"><i>To Do</i></div>
                 </div>
               </div>
               <q-linear-progress :value="project.progress.progressVal" color="secondary" class="q-mt-sm" />
@@ -177,8 +186,8 @@ export default {
     },
     getStatusColor (status) {
       return status === 'Stuck'
-        ? 'negative'
-        : 'positive'
+        ? 'deep-orange-10'
+        : 'secondary'
     }
   },
   computed: {

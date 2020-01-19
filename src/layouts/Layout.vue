@@ -1,32 +1,10 @@
 <template>
-  <q-layout view="hHh lpR fFf">
-    <q-header elevated>
-      <q-toolbar class="q-px-lg">
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          icon="menu"
-          aria-label="Menu"
-        />
-
-        <q-toolbar-title class="absolute-center">
-          Content Hero
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
-
+  <q-layout view="lHh Lpr lFf">
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      :width="100"
-      bordered
-      content-class="bg-grey-1">
-      <q-list>
-        <q-item-label header>
-        </q-item-label>
-
+      :width="100">
+      <q-list class="q-pt-md">
         <q-item
           v-for="nav in navs"
           :key="nav.label"
@@ -34,7 +12,7 @@
           exact
           clickable>
           <q-item-section avatar class="items-center q-pr-none">
-            <q-icon :name="nav.icon" />
+            <q-icon :name="nav.icon" class="q-mb-sm" color="grey-8" />
             <q-item-label caption>{{ nav.label }}</q-item-label>
           </q-item-section>
         </q-item>
