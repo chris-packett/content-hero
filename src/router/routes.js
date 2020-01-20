@@ -9,6 +9,10 @@ const routes = [
         component: () => import('pages/Dashboard.vue')
       },
       {
+        path: '/clients',
+        component: () => import('pages/CustomersPage.vue')
+      },
+      {
         name: 'NewProject',
         path: '/projects/new',
         props: true,

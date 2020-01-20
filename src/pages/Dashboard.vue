@@ -1,7 +1,10 @@
 <template>
   <q-page class="q-pa-lg column">
-    <NewProjectBtn
-      @create-new-project="openNewProjectDialog" />
+    <section class="row justify-between items-center q-mb-lg">
+      <h5 class="q-my-sm text-grey-8 text-bold">Projects</h5>
+      <NewProjectBtn
+        @create-new-project="openNewProjectDialog" />
+    </section>
 
     <NewProjectDialog
       v-model="modal"

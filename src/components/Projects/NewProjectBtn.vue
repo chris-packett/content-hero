@@ -1,8 +1,7 @@
 <template>
     <q-btn
         color="secondary"
-        label="New Project +"
-        class="self-end">
+        label="New Project +">
         <q-menu
             transition-show="jump-down"
             transition-hide="jump-up">
