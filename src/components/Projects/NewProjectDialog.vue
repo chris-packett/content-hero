@@ -71,7 +71,7 @@ export default {
         this.timer = void 0
 
         this.newProject.templateId = this.templateId
-        this.$router.push({ name: 'NewProject', params: { newProject: this.newProject } })
+        this.$router.push({ name: 'ProjectPage', params: { newProject: this.newProject } })
       }, 2000)
     }
   },

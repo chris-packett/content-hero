@@ -4,162 +4,136 @@
         class="q-my-sm">
         <CustomerHeader :customer="customer" />
 
-        <q-list separator>
-            <q-item>
-                <q-item-section
-                    top
-                    class="col-3">
-                    <q-item-label
-                        header
-                        class="q-px-none">
-                        Project Name
-                    </q-item-label>
-                </q-item-section>
+        <q-expansion-item
+            popup
+            :label="customer.name + ' Projects'"
+            switch-toggle-side
+        >
+            <q-list separator>
+                <q-item class="justify-evenly">
+                    <q-item-section
+                        top
+                        class="col-2 content-center">
+                        <q-item-label
+                            header
+                            class="q-px-none text-bold">
+                            Project Name
+                        </q-item-label>
+                    </q-item-section>
 
-                <q-item-section
-                    top
-                    class="col-2 q-mr-sm">
-                    <q-item-label
-                        header
-                        class="q-px-none">
-                        Due Date
-                    </q-item-label>
-                </q-item-section>
+                    <q-item-section
+                        top
+                        class="col-2 content-center">
+                        <q-item-label
+                            header
+                            class="q-px-none text-bold">
+                            Due Date
+                        </q-item-label>
+                    </q-item-section>
 
-                <q-item-section
-                    top
-                    class="col-2">
-                    <q-item-label
-                        header
-                        class="q-px-none">
-                        Status
-                    </q-item-label>
-                </q-item-section>
+                    <q-item-section
+                        top
+                        class="col-2 content-center">
+                        <q-item-label
+                            header
+                            class="q-px-none text-bold">
+                            Status
+                        </q-item-label>
+                    </q-item-section>
 
-                <q-item-section
-                    top
-                    class="col-4">
-                    <q-item-label
-                        header
-                        class="q-px-none">
-                        Progress
-                    </q-item-label>
-                </q-item-section>
-            </q-item>
+                    <q-item-section
+                        top
+                        class="col-5 content-center">
+                        <q-item-label
+                            header
+                            class="q-px-none text-bold">
+                            Progress
+                        </q-item-label>
+                    </q-item-section>
+                </q-item>
 
-            <q-item
-                v-for="project in projects"
-                :key="project.id"
-                class="q-pb-md">
-                <q-item-section class="col-3 text-grey-8 text-bold">
-                    <q-btn
-                        :to="`/projects/${project.id}`"
-                        flat
-                        v-ripple>
-                        {{ project.name }}
-                    </q-btn>
-                </q-item-section>
-
-                <q-item-section class="col-2 text-grey-8">
-                    {{ project.dueDate }}
-                </q-item-section>
-
-                <q-item-section>
-                    <div
-                        style="width: 70%;"
-                        class="column">
-                        <q-chip
-                            outline
-                            square
-                            class="justify-center"
-                            :color="getStatusColor(project.status)">
-                            {{ project.status }}
-                        </q-chip>
-                    </div>
-                </q-item-section>
-
-                <q-item-section class="col-4">
-                    <div
-                        clickable
-                        @click.prevent>
-                        <div class="row">
-                            <q-btn
-                                flat
-                                dense
-                                class="col text-center">
-                                <h6 class="q-my-xs text-grey-8">{{ project.progress.approved }}</h6>
-                            </q-btn>
-
-                            <q-btn
-                                flat
-                                dense
-                                class="col text-center">
-                                <h6 class="q-my-xs text-grey-8">{{ project.progress.completed }}</h6>
-                            </q-btn>
-
-                            <q-btn
-                                flat
-                                dense
-                                class="col text-center">
-                                <h6 class="q-my-xs text-grey-8">{{ project.progress.toDo }}</h6>
-                            </q-btn>
-                        </div>
-
-                        <div class="row">
-                            <div class="col text-center text-grey-8">
-                                <i>Approved</i>
-                            </div>
-
-                            <div class="col text-center text-grey-8">
-                                <i>Completed</i>
-                            </div>
-
-                            <div class="col text-center text-grey-8">
-                                <i>To Do</i>
-                            </div>
-                        </div>
-                    </div>
-                    <q-linear-progress
-                        :value="project.progress.progressVal"
-                        color="secondary"
-                        class="q-mt-sm" />
-                </q-item-section>
-
-                <q-item-section side>
-                    <div class="text-grey-8 q-gutter-xs">
+                <q-item
+                    v-for="project in projects"
+                    :key="project.id"
+                    class="q-pb-md justify-evenly">
+                    <q-item-section class="col-2 text-grey-8 content-center">
                         <q-btn
-                            size="12px"
+                            :to="`/projects/${project.id}`"
+                            class="text-weight-regular"
                             flat
-                            dense
-                            round
-                            icon="more_vert"
-                            @click.prevent />
-                    </div>
+                            no-caps
+                            v-ripple>
+                            {{ project.name }}
+                        </q-btn>
+                    </q-item-section>
 
-                    <q-menu
-                        anchor="bottom right"
-                        self="center right">
-                        <q-list>
-                            <q-item
-                                clickable
-                                dense
-                                class="text-primary">
-                                Edit
-                            </q-item>
+                    <q-item-section class="col-2 text-grey-8 content-center">
+                        {{ project.dueDate }}
+                    </q-item-section>
 
-                            <q-separator />
+                    <q-item-section class="col-2 content-center">
+                        <div
+                            style="width: 50%;"
+                            class="column">
+                            <q-chip
+                                outline
+                                square
+                                class="justify-center"
+                                :color="getStatusColor(project.status)">
+                                {{ project.status }}
+                            </q-chip>
+                        </div>
+                    </q-item-section>
 
-                            <q-item
-                                clickable
-                                dense
-                                class="text-negative">
-                                Delete
-                            </q-item>
-                        </q-list>
-                    </q-menu>
-                </q-item-section>
-            </q-item>
-        </q-list>
+                    <q-item-section class="col-5 content-center">
+                        <div
+                            clickable
+                            @click.prevent>
+                            <div class="row">
+                                <q-btn
+                                    flat
+                                    dense
+                                    class="col text-center">
+                                    <h6 class="q-my-xs text-grey-8">{{ project.progress.approved }}</h6>
+                                </q-btn>
+
+                                <q-btn
+                                    flat
+                                    dense
+                                    class="col text-center">
+                                    <h6 class="q-my-xs text-grey-8">{{ project.progress.completed }}</h6>
+                                </q-btn>
+
+                                <q-btn
+                                    flat
+                                    dense
+                                    class="col text-center">
+                                    <h6 class="q-my-xs text-grey-8">{{ project.progress.toDo }}</h6>
+                                </q-btn>
+                            </div>
+
+                            <div class="row">
+                                <div class="col text-center text-grey-8">
+                                    <span>Approved</span>
+                                </div>
+
+                                <div class="col text-center text-grey-8">
+                                    <span>Completed</span>
+                                </div>
+
+                                <div class="col text-center text-grey-8">
+                                    <span>To Do</span>
+                                </div>
+                            </div>
+                        </div>
+                        <q-linear-progress
+                            :value="project.progress.progressVal"
+                            color="secondary"
+                            class="q-mt-sm" />
+                    </q-item-section>
+                </q-item>
+            </q-list>
+        </q-expansion-item>
     </q-card>
 </template>
 

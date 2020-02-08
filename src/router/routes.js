@@ -9,14 +9,26 @@ const routes = [
         component: () => import('pages/Dashboard.vue')
       },
       {
+        path: '/templates',
+        component: () => import('pages/TemplatesPage.vue')
+      },
+      {
+        path: '/settings',
+        component: () => import('pages/SettingsPage.vue')
+      },
+      {
         path: '/clients',
         component: () => import('pages/CustomersPage.vue')
       },
       {
-        name: 'NewProject',
+        name: 'ProjectPage',
         path: '/projects/new',
         props: true,
-        component: () => import('pages/NewProject.vue')
+        component: () => import('pages/ProjectPage.vue')
+      },
+      {
+        path: '/projects/:projectId',
+        component: () => import('pages/ProjectPage.vue')
       }
     ]
   }

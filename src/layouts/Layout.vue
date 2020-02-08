@@ -9,6 +9,7 @@
           v-for="nav in navs"
           :key="nav.label"
           :to="nav.to"
+          :class="nav.to === $route.path ? 'bg-grey-3' : 'bg-white'"
           exact
           clickable>
           <q-item-section avatar class="items-center q-pr-none">
@@ -29,7 +30,6 @@
           :to="nav.to" />
       </q-tabs>
     </q-footer>
-
     <q-page-container>
       <router-view />
     </q-page-container>

@@ -30,11 +30,12 @@
                         self="top right">
                         <q-list>
                             <q-item
-                                v-for="n in 3" :key="n"
+                                v-for="template in templates"
+                                :key="template.id"
                                 clickable
-                                @click="openNewProjectDialog(n)"
+                                @click="openNewProjectDialog(template.id)"
                                 dense>
-                                <q-item-section>Template {{ n }}</q-item-section>
+                                <q-item-section>{{ template.name }}</q-item-section>
                             </q-item>
 
                             <q-separator />
@@ -55,6 +56,16 @@
 <script>
 export default {
   name: 'NewProjectBtn',
+
+  data () {
+    return {
+      templates: [
+        { id: 1, name: 'Web Development' },
+        { id: 2, name: 'Social Media' },
+        { id: 3, name: 'SEO' }
+      ]
+    }
+  },
 
   methods: {
     openNewProjectDialog: function (templateId = undefined) {

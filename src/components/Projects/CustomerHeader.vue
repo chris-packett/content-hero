@@ -1,8 +1,8 @@
 <template>
-    <q-item>
+    <q-item class="q-mb-sm">
         <q-item-section avatar>
             <q-avatar
-                size="75px"
+                size="60px"
                 :color="customer.name === 'Mark Lombardi' ? 'secondary' : 'accent'"
                 class="text-white">
                 {{ customer.name === 'Mark Lombardi' ? 'ML' : 'MF' }}
