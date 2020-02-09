@@ -10,7 +10,7 @@
                     clickable
                     @click="openNewProjectDialog()">
                     <q-item-section>
-                        Blank Project
+                        <b class="text-grey-8">Blank Project</b>
                     </q-item-section>
                 </q-item>
 
@@ -18,7 +18,7 @@
 
                 <q-item clickable>
                     <q-item-section>
-                        Project Template
+                        <b class="text-grey-8">Templates</b>
                     </q-item-section>
 
                     <q-item-section side>
@@ -35,7 +35,7 @@
                                 clickable
                                 @click="openNewProjectDialog(template.id)"
                                 dense>
-                                <q-item-section>{{ template.name }}</q-item-section>
+                                <q-item-section><b class="text-grey-8">{{ template.name }}</b></q-item-section>
                             </q-item>
 
                             <q-separator />
@@ -43,7 +43,7 @@
                             <q-item
                                 clickable
                                 dense>
-                                More Templates...
+                                <b class="text-grey-8">More Templates...</b>
                             </q-item>
                         </q-list>
                     </q-menu>

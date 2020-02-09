@@ -76,13 +76,13 @@ export default {
           name: 'Shoot to Thrill Media',
           contactName: 'Mark Lombardi',
           email: 'mark@shoottothrillmedia.com',
-          phoneNumber: '727-698-6363'
+          phoneNumber: '(727) 698-6363'
         },
         {
           name: 'Massey Yacht Sales',
           contactName: 'Matt Foreman',
           email: 'matt@shoottothrillmedia.com',
-          phoneNumber: '727-727-7272'
+          phoneNumber: '(727) 326-4622'
         }
       ]
     }

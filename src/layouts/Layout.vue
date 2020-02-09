@@ -9,7 +9,7 @@
           v-for="nav in navs"
           :key="nav.label"
           :to="nav.to"
-          :class="nav.to === $route.path ? 'bg-grey-3' : 'bg-white'"
+          :class="{ 'bg-grey-3': nav.to === $route.path, 'absolute-bottom q-mb-md': nav.to === '/settings' }"
           exact
           clickable>
           <q-item-section avatar class="items-center q-pr-none">
@@ -45,8 +45,8 @@ export default {
       leftDrawerOpen: false,
       navs: [
         {
-          label: 'Home',
-          icon: 'home',
+          label: 'Projects',
+          icon: 'dashboard',
           to: '/'
         },
         {
