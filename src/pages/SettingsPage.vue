@@ -12,11 +12,11 @@
           <q-tab name="Billing" label="Billing" />
         </q-tabs>
         <q-item style="width: 75%;">
-          <q-item-section class="col-1">
+          <q-item-section class="col-2">
             <b class="text-grey-8">Profile Picture</b>
           </q-item-section>
 
-          <q-item-section class="col-3">
+          <q-item-section class="col-4">
             <q-avatar
               size="60px"
               color="secondary"
@@ -26,31 +26,31 @@
           </q-item-section>
       </q-item>
       <q-item style="width: 75%;">
-        <q-item-section class="col-1">
+        <q-item-section class="col-2">
           <b class="text-grey-8">Full Name</b>
         </q-item-section>
 
-        <q-item-section class="col-3">
+        <q-item-section class="col-4">
           <q-input v-model="user.name" />
         </q-item-section>
       </q-item>
 
       <q-item style="width: 75%;">
-        <q-item-section class="col-1">
+        <q-item-section class="col-2">
           <b class="text-grey-8">Email Address</b>
         </q-item-section>
 
-        <q-item-section class="col-3">
+        <q-item-section class="col-4">
           <q-input v-model="user.email" />
         </q-item-section>
       </q-item>
 
       <q-item style="width: 75%;">
-        <q-item-section class="col-1">
+        <q-item-section class="col-2">
           <b class="text-grey-8">Phone Number</b>
         </q-item-section>
 
-        <q-item-section class="col-3">
+        <q-item-section class="col-4">
           <q-input v-model="user.phoneNumber" />
         </q-item-section>
       </q-item>

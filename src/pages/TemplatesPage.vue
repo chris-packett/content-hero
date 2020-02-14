@@ -21,7 +21,7 @@
             <q-item>
                 <q-item-section
                     top
-                    class="col-2">
+                    class="col-3">
                     <q-item-label
                         header
                         class="q-px-none text-bold">
@@ -31,7 +31,7 @@
 
                 <q-item-section
                     top
-                    class="col-8">
+                    class="col-7">
                     <q-item-label
                         header
                         class="q-px-none text-bold">
@@ -44,7 +44,7 @@
                 v-for="template in filteredTemplates"
                 :key="template.id"
                 class="q-pb-md">
-                <q-item-section class="col-2 text-grey-8">
+                <q-item-section class="col-3 text-grey-8">
                     <q-btn
                         class="text-weight-regular"
                         flat
@@ -54,7 +54,7 @@
                     </q-btn>
                 </q-item-section>
 
-                <q-item-section class="col-8 text-grey-8">
+                <q-item-section class="col-7 text-grey-8">
                     {{ template.description }}
                 </q-item-section>
             </q-item>
