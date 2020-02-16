@@ -11,8 +11,7 @@
             v-model="selectedTab"
             class="text-grey-8 q-mb-lg"
             align="left"
-            dense
-        >
+            dense>
             <q-tab name="Project" label="Projects" />
             <q-tab name="Section" label="Sections" />
             <q-tab name="Question" label="Questions" />

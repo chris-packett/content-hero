@@ -1,102 +1,64 @@
 <template>
-    <q-card class="q-mt-lg">
-        <q-list bordered separator class="rounded-borders">
+    <q-card flat class="q-mt-lg">
+        <q-list separator>
             <q-item>
-                <q-item-section class="col-5">
-                    <q-item-label caption>Question</q-item-label>
+                <q-item-section class="col-7">
+                    <q-item-label header class="q-px-none text-bold">Question</q-item-label>
                 </q-item-section>
 
                 <q-item-section class="col-3">
-                    <q-item-label caption>Input Type</q-item-label>
-                </q-item-section>
-
-                <q-item-section class="col-2 gt-sm">
-                    <q-item-label caption>Resources</q-item-label>
-                </q-item-section>
-
-                <q-item-section>
-                    <q-item-label caption>Comments</q-item-label>
+                    <q-item-label header class="q-px-none text-bold">Input Type</q-item-label>
                 </q-item-section>
             </q-item>
 
             <q-item v-for="(question, index) in questions" :key="question.id">
-                <q-item-section
-                    v-if="!question.isEditMode"
-                    top
-                    class="col-5">
-                    <q-item-label class="q-mt-sm">{{ question.text }}</q-item-label>
-                </q-item-section>
-
-                <q-item-section
-                    v-if="question.isEditMode"
-                    top
-                    class="col-5">
+                <q-item-section class="col-7">
+                    <q-item-label v-if="!question.isEditMode">
+                        {{ question.text }}
+                    </q-item-label>
                     <q-input
+                        clearable
+                        clear-icon="close"
+                        v-if="question.isEditMode"
                         v-model="question.text"
                         class="q-pr-xl" />
                 </q-item-section>
 
-                <q-item-section
-                    v-if="!question.isEditMode"
-                    class="col-3">
-                    {{ question.inputType }}
-                </q-item-section>
-
-                <q-item-section
-                    v-if="question.isEditMode"
-                    class="col-3">
+                <q-item-section class="col-3">
+                    <q-item-label v-if="!question.isEditMode">
+                        {{ question.inputType }}
+                    </q-item-label>
                     <q-select
+                        v-if="question.isEditMode"
                         v-model="question.inputType"
-                        :options="inputTypes"
-                        class="q-pr-xl">
+                        :options="inputTypes">
                     </q-select>
                 </q-item-section>
 
-                <q-item-section class="col-2 gt-sm">
-                    {{ question.resources }}
-                </q-item-section>
+                <q-space />
 
-                <q-item-section>
-                    {{ question.comments }}
-                </q-item-section>
+                <q-btn
+                    flat
+                    round
+                    color="grey-8"
+                    icon="save"
+                    v-if="question.isEditMode"
+                    @click="$emit('save-question', index)" />
 
-                <q-item-section side>
-                    <div class="text-grey-8 q-gutter-xs">
-                        <q-btn size="12px" flat dense round icon="more_vert" @click.prevent />
-                    </div>
-                    <q-menu anchor="bottom right" self="top right">
-                        <q-list>
-                            <q-item
-                                v-if="question.isEditMode"
-                                @click="$emit('save-question', index)"
-                                v-close-popup
-                                clickable
-                                dense
-                                class="text-secondary">
-                                Save
-                            </q-item>
-                            <q-separator />
-                            <q-item
-                                v-if="!question.isEditMode"
-                                @click="$emit('edit-question', index)"
-                                v-close-popup
-                                clickable
-                                dense
-                                class="text-primary">
-                                Edit
-                            </q-item>
-                            <q-separator />
-                            <q-item
-                                @click="$emit('delete-question', index)"
-                                v-close-popup
-                                clickable
-                                dense
-                                class="text-negative">
-                                Delete
-                            </q-item>
-                        </q-list>
-                    </q-menu>
-                </q-item-section>
+                <q-btn
+                    flat
+                    round
+                    color="grey-8"
+                    icon="edit"
+                    v-if="!question.isEditMode"
+                    @click="$emit('edit-question', index)" />
+
+                <q-btn
+                    flat
+                    round
+                    color="grey-8"
+                    icon="delete"
+                    @click="$emit('delete-question', index)" />
             </q-item>
         </q-list>
     </q-card>
@@ -115,9 +77,10 @@ export default {
   data () {
     return {
       inputTypes: [
-        'Input Textfield',
-        'Select Dropdown',
-        'Radio',
+        'Single Line Text',
+        'Multi Line Text',
+        'Select',
+        'Radio Button',
         'Checkbox'
       ]
     }

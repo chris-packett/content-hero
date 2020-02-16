@@ -5,15 +5,13 @@
         <CustomerHeader :customer="customer" />
 
         <q-expansion-item
+            default-opened
             popup
             :label="customer.name + ' Projects'"
-            switch-toggle-side
-        >
+            switch-toggle-side>
             <q-list separator>
                 <q-item class="justify-evenly">
-                    <q-item-section
-                        top
-                        class="col-2 content-center">
+                    <q-item-section class="col-2 content-center">
                         <q-item-label
                             header
                             class="q-px-none text-bold">
@@ -21,9 +19,7 @@
                         </q-item-label>
                     </q-item-section>
 
-                    <q-item-section
-                        top
-                        class="col-2 content-center">
+                    <q-item-section class="col-2 content-center">
                         <q-item-label
                             header
                             class="q-px-none text-bold">
@@ -31,9 +27,7 @@
                         </q-item-label>
                     </q-item-section>
 
-                    <q-item-section
-                        top
-                        class="col-2 content-center">
+                    <q-item-section class="col-2 content-center">
                         <q-item-label
                             header
                             class="q-px-none text-bold">
@@ -41,9 +35,7 @@
                         </q-item-label>
                     </q-item-section>
 
-                    <q-item-section
-                        top
-                        class="col-5 content-center">
+                    <q-item-section class="col-5 content-center">
                         <q-item-label
                             header
                             class="q-px-none text-bold">
@@ -126,6 +118,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <q-linear-progress
                             :value="project.progress.progressVal"
                             color="secondary"

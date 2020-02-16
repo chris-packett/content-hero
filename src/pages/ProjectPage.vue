@@ -39,17 +39,13 @@ export default {
         {
           id: 1,
           text: 'What is your Company\'s Name?',
-          inputType: 'Input Textfield',
-          resources: 'Video',
-          comments: 'Bubble',
+          inputType: 'Single Line Text',
           isEditMode: false
         },
         {
           id: 2,
           text: 'What is your Mission Statement?',
-          inputType: 'Select Dropdown',
-          resources: 'Video',
-          comments: 'Bubble',
+          inputType: 'Select',
           isEditMode: false
         }
       ]
