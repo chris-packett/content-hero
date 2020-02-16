@@ -8,6 +8,7 @@
             default-opened
             popup
             :label="customer.name + ' Projects'"
+            header-class="text-grey-8"
             switch-toggle-side>
             <q-list separator>
                 <q-item class="justify-evenly">

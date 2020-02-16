@@ -29,6 +29,10 @@ const routes = [
       {
         path: '/projects/:projectId',
         component: () => import('pages/ProjectPage.vue')
+      },
+      {
+        path: '/projects/:projectId/preview',
+        component: () => import('pages/PreviewPage.vue')
       }
     ]
   }

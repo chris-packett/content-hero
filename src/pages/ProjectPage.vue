@@ -1,18 +1,35 @@
 <template>
   <q-page class="q-pa-lg column">
       <section class="row justify-between items-center">
-          <h5 class="q-my-sm text-grey-8 text-bold">{{ newProject.name }}</h5>
+          <h5 class="q-my-sm text-grey-8 text-bold">
+            {{ project.name }}
+          </h5>
+
           <q-btn
-              color="secondary"
-              label="New Question +"
-              @click="createNewQuestion"></q-btn>
+            color="accent"
+            label="Preview"
+            icon-right="arrow_right"
+            :to="`${project.id}/preview`"></q-btn>
       </section>
-      <h6 class="q-ma-none text-grey text-subtitle2">{{ newProject.client }}</h6>
+
+      <h6 class="q-ma-none text-grey text-subtitle2">
+        {{ project.client }}
+      </h6>
+
       <QuestionList
         :questions="questions"
         @save-question="saveQuestion"
         @edit-question="editQuestion"
         @delete-question="deleteQuestion" />
+
+      <section class="row justify-start q-pl-md q-pt-md">
+        <q-btn
+          size="xs"
+          round
+          color="secondary"
+          icon="add"
+          @click="createNewQuestion"></q-btn>
+      </section>
   </q-page>
 </template>
 
@@ -48,6 +65,18 @@ export default {
           inputType: 'Select',
           isEditMode: false
         }
+      ],
+      projects: [
+        {
+          id: 1,
+          name: 'Massey Yacht\'s Website',
+          client: 'Matt Foreman'
+        },
+        {
+          id: 2,
+          name: 'Tesla Cyber Truck Project',
+          client: 'Mark Lombardi'
+        }
       ]
     }
   },
@@ -62,8 +91,6 @@ export default {
         id: nextId,
         text: '',
         inputType: '',
-        resources: 'Video',
-        comments: 'Bubble',
         isEditMode: true
       }
 
@@ -89,6 +116,18 @@ export default {
     },
     deleteQuestion (index) {
       this.questions = this.questions.filter((q, i) => i !== index)
+    }
+  },
+
+  computed: {
+    project () {
+      const projectId = parseInt(this.$route.params.projectId)
+
+      if (projectId) {
+        return this.projects.find(project => project.id === projectId)
+      }
+
+      return this.newProject
     }
   }
 }

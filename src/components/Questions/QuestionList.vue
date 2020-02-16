@@ -1,5 +1,5 @@
 <template>
-    <q-card flat class="q-mt-lg">
+    <q-card flat square class="q-mt-lg" style="border-bottom: 1px solid #DDD;">
         <q-list separator>
             <q-item>
                 <q-item-section class="col-7">
@@ -13,7 +13,7 @@
 
             <q-item v-for="(question, index) in questions" :key="question.id">
                 <q-item-section class="col-7">
-                    <q-item-label v-if="!question.isEditMode">
+                    <q-item-label v-if="!question.isEditMode" class="text-grey-8">
                         {{ question.text }}
                     </q-item-label>
                     <q-input
@@ -25,7 +25,7 @@
                 </q-item-section>
 
                 <q-item-section class="col-3">
-                    <q-item-label v-if="!question.isEditMode">
+                    <q-item-label v-if="!question.isEditMode" class="text-grey-8">
                         {{ question.inputType }}
                     </q-item-label>
                     <q-select
